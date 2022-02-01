@@ -279,3 +279,7 @@ body::-webkit-scrollbar-thumb {
 .hidden {
   display: none;
 }
+
+.redborder {
+  border: 2.5px solid red;
+}

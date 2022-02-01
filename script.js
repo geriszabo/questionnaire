@@ -9,6 +9,7 @@ import { messages } from "./questions.js";
 
 const mainContainer = document.querySelector(".mainContainer");
 const sendBtn = document.querySelector(".sendBtn");
+const modal = document.querySelector(".modal");
 
 // Nr of questions in the header
 document.querySelector(".questnr").textContent = questions.length;
@@ -76,58 +77,46 @@ const getQuestionsValuesNotes = function () {
 };
 
 // Modal with error and success message
-const showAndRemoveMessage = function (text, sec) {
+const showAndRemoveMessage = function (text = "success", sec) {
   modal.classList.remove("hidden");
   modal.classList.add(`modal--${text}`);
   document.querySelector(".modalText").textContent = messages[text];
   setInterval(() => modal.classList.add("hidden"), sec * 1000);
-  // console.log(messages[`${text}`]);
 };
-
-let msg = "error";
 
 sendBtn.addEventListener("click", function (e) {
   getQuestionsValuesNotes();
+  let msg = "success";
 
   questions.map((question, i) => {
     if (parseFloat(question.percentage) <= 80 && question.note.length === 0) {
-      console.log(question.hun, "80 alatti");
       e.preventDefault();
       msg = "error";
-      notesArr[i].style.border = "2.5px solid red";
+      notesArr[i].classList.add("redborder");
       console.log(`Question number ${i} was not answered`);
-      showAndRemoveMessage("error", 3);
       console.log(msg);
-    } else if (
-      (parseFloat(question.percentage) >= 80 && question.note.length === 0) ||
-      (parseFloat(question.percentage) < 80 && question.note.length > 0)
-    ) {
-      // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-      console.log(question.hun, "80 feletti");
-      let str = "";
-      msg = "success";
-      console.log(msg);
-      showAndRemoveMessage("success", 3);
-      let avgPercentage;
-      let percentages = [];
-      questions.map((question) => {
-        percentages.push(question.percentage);
-        avgPercentage = calcAvg(percentages);
-        str += `${question.hun}: ${question.percentage}%25, ${question.note} %0D%0A`;
-      });
-      sendBtn.href = `mailto:gergo2.szabo@audi.hu?subject=Kundenzufriedenheit&body=Kedves G/PM-6,%0D%0A %0D%0AA felmérés összesített eredménye: ${Math.round(
-        calcAvg(percentages)
-      )}%25  %0D%0A %0D%0AItt láthatod a részeredményt, magával az indoklással: %0D%0A${str}`;
-      // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
     }
   });
-  // showAndRemoveMessage(msg, 3);
-});
+  // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  let str = "";
+  // msg = "success";
+  console.log(msg);
 
-const modal = document.querySelector(".modal");
+  let percentages = [];
+  questions.map((question) => {
+    percentages.push(question.percentage);
+    str += `${question.hun}: ${question.percentage}%25, ${question.note} %0D%0A`;
+  });
+  sendBtn.href = `mailto:gergo2.szabo@audi.hu?subject=Kundenzufriedenheit&body=Kedves G/PM-6,%0D%0A %0D%0AA felmérés összesített eredménye: ${Math.round(
+    calcAvg(percentages)
+  )}%25  %0D%0A %0D%0AItt láthatod a részeredményt, magával az indoklással: %0D%0A${str}`;
+  // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  showAndRemoveMessage(msg, 3);
+});
 
 notesArr.map((note) => {
   note.addEventListener("change", function () {
-    if (note.value.length > 0) note.style.border = "0px";
+    if (note.value.length > 0) note.classList.remove("redborder");
   });
 });
