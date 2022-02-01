@@ -260,15 +260,17 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   align-items: center;
   filter: drop-shadow(0 6mm 2mm rgba(49, 116, 116, 0.13));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   padding: 5rem 6rem;
 }
 
 .modal--error {
-  background-color: rgb(255, 95, 95);
+  background-color: rgba(255, 95, 95, 0.411);
 }
 
 .modal--success {
-  background-color: rgb(156, 213, 137);
+  background-color: rgba(156, 213, 137, 0.445);
 }
 
 .modalText {

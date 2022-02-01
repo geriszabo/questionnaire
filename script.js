@@ -68,6 +68,7 @@ const calcAvg = function (arr) {
 
 const percentagesArr = Array.from(document.querySelectorAll(".sliderValue"));
 const notesArr = Array.from(document.querySelectorAll(".questionNote"));
+console.log(notesArr.value);
 
 const getQuestionsValuesNotes = function () {
   questions.map((question, i) => {
@@ -82,6 +83,7 @@ const showAndRemoveMessage = function (text = "success", sec) {
   modal.classList.add(`modal--${text}`);
   document.querySelector(".modalText").textContent = messages[text];
   setInterval(() => modal.classList.add("hidden"), sec * 1000);
+  setInterval(() => modal.classList.remove(`modal--${text}`), sec * 1000);
 };
 
 sendBtn.addEventListener("click", function (e) {
@@ -94,13 +96,13 @@ sendBtn.addEventListener("click", function (e) {
       msg = "error";
       notesArr[i].classList.add("redborder");
       console.log(`Question number ${i} was not answered`);
-      console.log(msg);
+      console.log(msg, "from under 80 ⬇");
     }
   });
   // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
   let str = "";
   // msg = "success";
-  console.log(msg);
+  console.log(msg, "from over 80 ⬆");
 
   let percentages = [];
   questions.map((question) => {
