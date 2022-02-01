@@ -10,6 +10,7 @@ import { messages } from "./questions.js";
 const mainContainer = document.querySelector(".mainContainer");
 const sendBtn = document.querySelector(".sendBtn");
 const modal = document.querySelector(".modal");
+const bg = document.querySelector(".bg");
 
 // Nr of questions in the header
 document.querySelector(".questnr").textContent = questions.length;
@@ -80,9 +81,13 @@ const getQuestionsValuesNotes = function () {
 // Modal with error and success message
 const showAndRemoveMessage = function (text = "success", sec) {
   modal.classList.remove("hidden");
+  bg.classList.remove("hidden");
   modal.classList.add(`modal--${text}`);
   document.querySelector(".modalText").textContent = messages[text];
-  setInterval(() => modal.classList.add("hidden"), sec * 1000);
+  setInterval(() => {
+    modal.classList.add("hidden");
+    bg.classList.add("hidden");
+  }, sec * 1000);
   setInterval(() => modal.classList.remove(`modal--${text}`), sec * 1000);
 };
 
