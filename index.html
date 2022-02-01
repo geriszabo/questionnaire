@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" defer src="script.js"></script>
+  </head>
+  <body>
+    <!-- Hero page -->
+    <div class="hero">
+      <h1>Vevői elégedettség mérése</h1>
+      <h3>
+        Ez a G/PM-6 Kundenzufriedenheitját mérő kérdőív, ahol
+        <span class="questnr">1</span> darab kérdést kell megválaszolni egy
+        1-től 100-ig terjedő skálán. A kérdőív azokra a kérdésekre, amik 80%
+        alatti értékelést kaptak indoklást, illetve javulási javaslatot kér
+        tőled, hogy folyamatosan tudjunk fejlődni. A kérdőívet a legalul
+        megtalálható küldés gombbal tudod elküldeni.
+      </h3>
+      <a href="#survey" class="heroBtn">KEZDHETJÜK?</a>
+    </div>
+
+    <!-- Survey start -->
+    <div class="questCont">
+      <h1 id="survey">Vevői elégedettség kérdések</h1>
+      <div class="mainContainer">
+        <!-- <div class="subContainer">
+          <div class="questionContainer">
+            <p>Question</p>
+          </div>
+          <div class="rangeContainer">
+            <input type="range" min="1" max="100" value="100" />
+            <div class="sliderValueContainer">
+              <p class="sliderValue">100%</p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <a href="#summaryContainer" class="sendBtn">Befejezés és elküldés</a>
+    </div>
+
+    <!-- <div class="summaryContainer" id="summaryContainer">
+      <h1>Elküldés</h1>
+      <h3 class="sumText">
+        Mivel minden kérdésre legalább 80%-os értékelést adtál, ezért nem kell
+        semmit megindokolnod.
+      </h3>
+      <div class="causesContainer"></div>
+      <a class="sendBtn">Elküldöm</a>
+    </div> -->
+
+    <div class="modal hidden">
+      <p class="modalText"></p>
+    </div>
+  </body>
+</html>
