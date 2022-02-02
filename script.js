@@ -3,6 +3,7 @@
 
 import { questions } from "./questions.js";
 import { messages } from "./questions.js";
+import { calcAvg, getQuestionsValuesNotes } from "./helper.js";
 
 // let allValues = [];
 // const modalBody = document.querySelector(".modalBody");
@@ -61,22 +62,11 @@ const displayPercentages = function () {
 displayPercentages();
 
 // Functions
-// Calculate average
-const calcAvg = function (arr) {
-  const valuesAvg = arr.reduce((sum, num) => sum + num / arr.length, 0);
-  return valuesAvg;
-};
 
-const percentagesArr = Array.from(document.querySelectorAll(".sliderValue"));
-const notesArr = Array.from(document.querySelectorAll(".questionNote"));
-console.log(notesArr.value);
-
-const getQuestionsValuesNotes = function () {
-  questions.map((question, i) => {
-    questions[i].percentage = parseFloat(percentagesArr[i].textContent);
-    questions[i].note = notesArr[i].value;
-  });
-};
+export const percentagesArr = Array.from(
+  document.querySelectorAll(".sliderValue")
+);
+export const notesArr = Array.from(document.querySelectorAll(".questionNote"));
 
 // Modal with error and success message
 const showAndRemoveMessage = function (text = "success", sec) {
