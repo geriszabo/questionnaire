@@ -115,7 +115,7 @@ sendBtn.addEventListener("click", function (e) {
         avgPercentage = calcAvg(percentages);
         str += `${question.hun}: ${question.percentage}%25, ${question.note} %0D%0A`;
       });
-      sendBtn.href = `mailto:gergo2.szabo@audi.hu?subject=Kundenzufriedenheit&body=Kedves G/PM-6,%0D%0A %0D%0AA felmérés összesített eredménye: ${Math.round(
+      sendBtn.href = `mailto:peter.penzes@audi.hu?subject=Kundenzufriedenheit&body=Kedves G/PM-6,%0D%0A %0D%0AA felmérés összesített eredménye: ${Math.round(
         calcAvg(percentages)
       )}%25  %0D%0A %0D%0AItt láthatod a részeredményt, magával az indoklással: %0D%0A${str}`;
       // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
